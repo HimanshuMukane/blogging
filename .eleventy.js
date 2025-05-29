@@ -1,3 +1,5 @@
+import pluginRss from "@11ty/eleventy-plugin-rss";
+
 export default function(eleventyConfig) {
     // Copy static assets
     eleventyConfig.addPassthroughCopy("src/assets");
@@ -5,6 +7,9 @@ export default function(eleventyConfig) {
     
     // Watch CSS files for changes
     eleventyConfig.addWatchTarget("src/css/");
+    
+    // Add RSS plugin
+    eleventyConfig.addPlugin(pluginRss);
     
     // Add date filters
     eleventyConfig.addFilter("dateIso", date => {

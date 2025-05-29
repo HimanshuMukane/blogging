@@ -1,0 +1,17 @@
+{
+    "title": "My Blog",
+    "url": "https://himanshumukane.github.io/blogging",
+    "language": "en",
+    "description": "A place where I share my thoughts, ideas, and experiences",
+    "author": {
+        "name": "Himanshu Mukane",
+        "email": "your-email@example.com"
+    },
+    "feed": {
+        "subtitle": "A place where I share my thoughts, ideas, and experiences",
+        "filename": "feed.xml",
+        "path": "/feed/feed.xml",
+        "id": "https://himanshumukane.github.io/blogging"
+    }
+} 
+ 

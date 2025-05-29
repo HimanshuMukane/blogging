@@ -1,9 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ metadata.language }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title | default('My Blog') }}</title>
+    <title>{% if title %}{{ title }} - {% endif %}{{ metadata.title }}</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{% if description %}{{ description }}{% else %}{{ metadata.description }}{% endif %}">
+    <meta name="author" content="{{ metadata.author.name }}">
+    <link rel="canonical" href="{{ metadata.url }}{{ page.url }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
+    <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ metadata.title }}{% endif %}">
+    <meta property="og:description" content="{% if description %}{{ description }}{% else %}{{ metadata.description }}{% endif %}">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ metadata.url }}{{ page.url }}">
+    <meta name="twitter:title" content="{% if title %}{{ title }}{% else %}{{ metadata.title }}{% endif %}">
+    <meta name="twitter:description" content="{% if description %}{{ description }}{% else %}{{ metadata.description }}{% endif %}">
+    
+    <!-- RSS Feed -->
+    <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +35,7 @@
     <header class="site-header">
         <div class="container">
             <nav class="main-nav">
-                <a href="/" class="site-title">My Blog</a>
+                <a href="/" class="site-title">{{ metadata.title }}</a>
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li>
                     <li><a href="/blog">Blog</a></li>
@@ -31,7 +53,7 @@
 
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; {{ page.date.getFullYear() }} My Blog. All rights reserved.</p>
+            <p>&copy; {{ page.date.getFullYear() }} {{ metadata.author.name }}. All rights reserved.</p>
         </div>
     </footer>
 </body>
