@@ -6,6 +6,19 @@ export default function(eleventyConfig) {
     // Watch CSS files for changes
     eleventyConfig.addWatchTarget("src/css/");
     
+    // Add date filters
+    eleventyConfig.addFilter("dateIso", date => {
+        return date.toISOString();
+    });
+    
+    eleventyConfig.addFilter("dateReadable", date => {
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    });
+    
     return {
         dir: {
             input: "src",
